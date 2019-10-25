@@ -1,5 +1,3 @@
-require "pp"
-require "delegate"
 require "trailblazer"
 require "minitest/autorun"
 
@@ -9,7 +7,9 @@ require "reform/form/active_model/validations"
 Reform::Form.class_eval do
   include Reform::Form::ActiveModel::Validations
 end
-# require "trailblazer/deprecation/context.rb"
+
+require "trailblazer/operation/callback"
+require "trailblazer/operation/procedural/validate"
 
 module Mock
   class Result
@@ -26,13 +26,4 @@ module Test
     end
   end
   ReturnResult = ->(last, input, options) { input }
-end
-
-Minitest::Spec::Operation = Trailblazer::Operation
-
-Memo = Struct.new(:id, :body) do
-  def self.find(id)
-    return new(id, "Yo!") if id
-    nil
-  end
 end

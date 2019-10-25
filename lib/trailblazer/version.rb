@@ -1,5 +1,3 @@
 module Trailblazer
-  module Version
-    VERSION = "2.1.0"
-  end
+  VERSION = "2.0.7"
 end

@@ -1,85 +1,3 @@
-# 2.1
-
-* Macros now always have to provide an `:id`. This was a bit fuzzy in 2.0.
-
-* Nested
-  if Nested( Edit ), outputs will automatically be connected, see editor.
-* Wrap
-  dropped the `pipe` option. This is now `options, flow_options, *`
-  `false` is now automatically connected to End.failure.
-* remove `Uber::Callable`.
-
-* `operation.new` step removed.
-* Undocumented step behavior removed. You can't write to `self` anymore.
-
-        ```ruby
-        step :process
-        def process(*)
-          self["x"] = true
-        end
-        ```
-
-    Always write to `options`.
-
-* self[] removed
-* Fixed `Guard` where procs could receive one argument, only. Guards follow the step interface: `Policy::Guard( ->(options, **) { .. } )
-* Removed `Operation::Callback` which was a poor idea and luckily no one was using it.
-
-TODO:
-document Task API and define step API
-deprecate step->(options) ?
-injectable, per-operation step arguments strategy?
-
-
-# 2.1.0
-
-* Remove `declarative` dependency.
-
-# 2.1.0.rc13
-
-* Use newest `macro` and `macro-context`.  They use symbols keys now everywhere.
-
-# 2.1.0.rc12
-
-* Update dependencies.
-
-# 2.1.0.rc11
-
-* Remove all macros. They're not located in `trailblazer-macro` and `trailblazer-macro-contract`.
-* Remove DSL
-
-# 2.1.0.rc1
-
-* Remove `task` and `input_output`, those are implemented in `activity`.
-
-# 2.1.0.beta7
-
-* Use new `activity-0.3.2` where `VariableMapping` is included now.
-
-# 2.1.0.beta6
-
-* Use new `activity-0.3.0`.
-
-# 2.1.0.beta5
-
-* All macros are now cleanly extracted to `trailblazer-macro` and `trailblazer-macro-contract`.
-
-# 2.1.0.beta4
-
-* Simple maintenance release to establish `activity-0.5.0`.
-
-# 2.1.0.beta3
-
-* More simplifications because of `activity`.
-
-# 2.1.0.beta2
-
-* Simplify `Nested` and several other internals by using the new `Activity` API.
-
-# 2.1.0.beta1
-
-* Add `deprecation/call` and `deprecation/context` that help with the new `call` API and symbols for `options` keys.
-
 # 2.0.7
 
 * Allow to use any method with the Model macro, e.g.
@@ -89,7 +7,7 @@ injectable, per-operation step arguments strategy?
     ```
 
   will now invoke `Comment[ params[:id] ]`, which makes using Sequel a breeze.
- code: `contract do .. end` etc needs to be moved to a new gem if we want to keep it alive.
+
 
 # 2.0.6
 
