@@ -1,3 +1,6 @@
+## оригинальный код
+https://github.com/trailblazer/trailblazer
+
 # Trailblazer
 
 _Trailblazer provides new high-level abstractions for Ruby frameworks. It gently enforces encapsulation, an intuitive code structure and gives you an object-oriented architecture._
